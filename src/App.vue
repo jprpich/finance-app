@@ -1,7 +1,9 @@
 <script setup></script>
 
 <template>
-  <h1 class="finance-title">GASTOS FIJOS</h1>
+  <div class="finance-title">
+    <h1>GASTOS FIJOS</h1>
+  </div>
   <div class="finance-group">
     <div class="finance-group-left">
       <h2 class="finance-group-left__title">Arriendo</h2>
@@ -59,10 +61,13 @@ h1 {
 }
 
 .finance-title {
+  width: 327px;
+  height: 67px;
   border: 3px solid rgba(178, 151, 200, 0.66);
-  padding: 14px;
   margin-bottom: 56px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .finance-group {
