@@ -61,7 +61,7 @@ h1 {
 }
 
 .finance-title {
-  width: 327px;
+  width: 100%;
   height: 67px;
   border: 3px solid rgba(178, 151, 200, 0.66);
   margin-bottom: 56px;
