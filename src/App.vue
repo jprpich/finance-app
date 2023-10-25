@@ -1,26 +1,24 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+<script setup></script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <h1 class="finance-title">GASTOS FIJOS</h1>
 </template>
 
 <style scoped>
+h1 {
+  color: #000;
+  text-align: center;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.finance-title {
+  border: 3px solid rgba(178, 151, 200, 0.66);
+  padding: 14px;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
