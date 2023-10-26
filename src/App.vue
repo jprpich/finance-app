@@ -36,7 +36,7 @@ export default {
       this.groups.forEach((group) => {
         sum += group.price
       })
-      return sum
+      return '$' + sum.toLocaleString('de-DE')
     }
   },
   methods: {
