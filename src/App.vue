@@ -1,56 +1,64 @@
-<script setup></script>
-
 <template>
-  <div class="finance-top">
-    <h1 class="finance-top__title">GASTOS FIJOS</h1>
-  </div>
-  <div class="finance-group">
-    <div class="finance-group-left">
-      <h2 class="finance-group-left__title">Arriendo</h2>
+  <div class="finance-wrapper">
+    <div class="finance-top">
+      <h1 class="finance-top__title">GASTOS FIJOS</h1>
     </div>
-    <div class="finance-group-right">
-      <p class="finance-group-right__title">1,500.000</p>
+    <div class="finance-group" v-for="(group, i) in groups" :key="i">
+      <div class="finance-group-left">
+        <h2 class="finance-group-left__title">{{ group.title }}</h2>
+      </div>
+      <div class="finance-group-right">
+        <p class="finance-group-right__title">{{ group.price }}</p>
+      </div>
     </div>
-  </div>
-
-  <div class="finance-group">
-    <div class="finance-group-left">
-      <h2 class="finance-group-left__title">Gas</h2>
-    </div>
-    <div class="finance-group-right">
-      <p class="finance-group-right__title">250.000</p>
-    </div>
-  </div>
-
-  <div class="finance-group">
-    <div class="finance-group-left">
-      <h2 class="finance-group-left__title">Luz</h2>
-    </div>
-    <div class="finance-group-right">
-      <p class="finance-group-right__title">350.000</p>
-    </div>
-  </div>
-
-  <div class="finance-group">
-    <div class="finance-group-left">
-      <h2 class="finance-group-left__title">Agua</h2>
-    </div>
-    <div class="finance-group-right">
-      <p class="finance-group-right__title">150.000</p>
-    </div>
-  </div>
-
-  <div class="finance-group">
-    <div class="finance-group-left">
-      <h2 class="finance-group-left__title">Transporte</h2>
-    </div>
-    <div class="finance-group-right">
-      <p class="finance-group-right__title">100.000</p>
-    </div>
+    <h1>{{ expensesTotal }}</h1>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      groups: [
+        {
+          title: 'Arriendo',
+          price: 1500000
+        },
+        {
+          title: 'Gas',
+          price: 250000
+        },
+        {
+          title: 'Luz',
+          price: 350000
+        },
+        {
+          title: 'Agua',
+          price: 150000
+        },
+        {
+          title: 'Transporte',
+          price: 100000
+        }
+      ]
+    }
+  },
+  computed: {
+    expensesTotal() {
+      let sum = 0
+      this.groups.forEach((group) => {
+        sum += group.price
+      })
+      return sum
+    }
+  }
+}
+</script>
+
 <style scoped lang="scss">
+.finance-wrapper {
+  max-width: 500px;
+}
 .finance-top {
   width: 100%;
   height: 67px;
