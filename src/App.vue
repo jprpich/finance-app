@@ -8,7 +8,12 @@
         <h2 class="finance-group-left__title">{{ group.title }}</h2>
       </div>
       <div class="finance-group-right">
-        <p class="finance-group-right__title">{{ group.price }}</p>
+        <input
+          class="finance-group-right__title"
+          type="number"
+          :value="group.price"
+          @input="updatePrice($event, i)"
+        />
       </div>
     </div>
     <div class="finance-bottom">
@@ -22,28 +27,7 @@
 export default {
   data() {
     return {
-      groups: [
-        {
-          title: 'Arriendo',
-          price: 1500000
-        },
-        {
-          title: 'Gas',
-          price: 250000
-        },
-        {
-          title: 'Luz',
-          price: 350000
-        },
-        {
-          title: 'Agua',
-          price: 150000
-        },
-        {
-          title: 'Transporte',
-          price: 100000
-        }
-      ]
+      groups: null
     }
   },
   computed: {
@@ -54,6 +38,40 @@ export default {
       })
       return sum
     }
+  },
+  methods: {
+    updatePrice(e, idx) {
+      const newPrice = +e.target.value
+      const title = `group-${idx}`
+
+      localStorage.setItem(title, newPrice)
+
+      this.groups[idx].price = newPrice
+    }
+  },
+  created() {
+    this.groups = [
+      {
+        title: 'Arriendo',
+        price: +localStorage.getItem('group-0') || 0
+      },
+      {
+        title: 'Gas',
+        price: +localStorage.getItem('group-1') || 0
+      },
+      {
+        title: 'Luz',
+        price: +localStorage.getItem('group-2') || 0
+      },
+      {
+        title: 'Agua',
+        price: +localStorage.getItem('group-3') || 0
+      },
+      {
+        title: 'Transporte',
+        price: +localStorage.getItem('group-4') || 0
+      }
+    ]
   }
 }
 </script>
@@ -116,12 +134,17 @@ export default {
   justify-content: center;
 
   &__title {
+    height: 66px;
     color: #000;
     text-align: center;
     font-size: 16px;
     font-style: italic;
     font-weight: 300;
-    line-height: normal;
+    outline: none;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #b297c8;
+    border-bottom: 1px solid #b297c8;
   }
 }
 
