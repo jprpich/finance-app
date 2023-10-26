@@ -11,7 +11,10 @@
         <p class="finance-group-right__title">{{ group.price }}</p>
       </div>
     </div>
-    <h1>{{ expensesTotal }}</h1>
+    <div class="finance-bottom">
+      <h3 class="finance-bottom__left">VALOR TOTAL</h3>
+      <p class="finance-bottom__right">{{ expensesTotal }}</p>
+    </div>
   </div>
 </template>
 
@@ -63,7 +66,7 @@ export default {
   width: 100%;
   height: 67px;
   border: 3px solid rgba(178, 151, 200, 0.66);
-  margin-bottom: 56px;
+  margin-bottom: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,6 +122,25 @@ export default {
     font-style: italic;
     font-weight: 300;
     line-height: normal;
+  }
+}
+
+.finance-bottom {
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid #b297c8;
+  width: 299px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  &__left {
+    color: #000;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 64px;
+  }
+  &__right {
+    margin-left: 20px;
   }
 }
 </style>
