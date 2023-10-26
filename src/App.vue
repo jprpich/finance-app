@@ -134,17 +134,14 @@ export default {
   justify-content: center;
 
   &__title {
-    height: 66px;
+    height: 35px;
     color: #000;
     text-align: center;
     font-size: 16px;
     font-style: italic;
     font-weight: 300;
     outline: none;
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid #b297c8;
-    border-bottom: 1px solid #b297c8;
+    border: none;
   }
 }
 
