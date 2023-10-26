@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-  <div class="finance-title">
-    <h1>GASTOS FIJOS</h1>
+  <div class="finance-top">
+    <h1 class="finance-top__title">GASTOS FIJOS</h1>
   </div>
   <div class="finance-group">
     <div class="finance-group-left">
@@ -50,17 +50,8 @@
   </div>
 </template>
 
-<style scoped>
-h1 {
-  color: #000;
-  text-align: center;
-  font-size: 32px;
-  font-style: italic;
-  font-weight: 300;
-  line-height: normal;
-}
-
-.finance-title {
+<style scoped lang="scss">
+.finance-top {
   width: 100%;
   height: 67px;
   border: 3px solid rgba(178, 151, 200, 0.66);
@@ -68,6 +59,15 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &__title {
+    color: #000;
+    text-align: center;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: normal;
+  }
 }
 
 .finance-group {
@@ -83,15 +83,15 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.finance-group-left__title {
-  color: #fff;
-  text-align: center;
-  font-size: 16px;
-  font-style: italic;
-  font-weight: 800;
-  line-height: normal;
+  &__title {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 800;
+    line-height: normal;
+  }
 }
 
 .finance-group-right {
@@ -103,76 +103,14 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.finance-group-right__title {
-  color: #000;
-  text-align: center;
-  font-size: 16px;
-  font-style: italic;
-  font-weight: 300;
-  line-height: normal;
-}
-
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  &__title {
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: normal;
   }
 }
 </style>
