@@ -4,9 +4,6 @@
       <h1 class="finance-top__title">GASTOS FIJOS</h1>
     </div>
     <div class="finance-group" v-for="(group, i) in groups" :key="i">
-      <div class="finance-group-left">
-        <h2 class="finance-group-left__title">{{ group.title }}</h2>
-      </div>
       <div class="finance-group-right">
         <input
           class="finance-group-right__title"
@@ -14,6 +11,10 @@
           :value="group.price"
           @input="updatePrice($event, i)"
         />
+      </div>
+      <div class="finance-group-left">
+        <h2 class="finance-group-left__title">{{ group.title }}</h2>
+        <h2 class="finance-group-left__price">{{ displayPrice(group) }}</h2>
       </div>
     </div>
     <div class="finance-bottom">
@@ -49,6 +50,9 @@ export default {
       localStorage.setItem(title, newPrice)
 
       this.groups[idx].price = newPrice
+    },
+    displayPrice(group) {
+      return '$' + group.price.toLocaleString('de-DE')
     }
   },
   created() {
@@ -112,6 +116,7 @@ export default {
   border-radius: 10px;
   background-color: #530f7c;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -123,12 +128,19 @@ export default {
     font-weight: 800;
     line-height: normal;
   }
+
+  &__price {
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
 }
 
 .finance-group-right {
   width: 257px;
   height: 66px;
-  margin-left: 15px;
+  margin-right: 15px;
   border: 1px solid #b297c8;
   border-radius: 10px;
   display: flex;
