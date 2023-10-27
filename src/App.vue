@@ -41,7 +41,9 @@ export default {
   },
   methods: {
     updatePrice(e, idx) {
-      const newPrice = +e.target.value
+      const value = e.target.value
+      const price = value.replace(/[.]/g, '')
+      const newPrice = +price
       const title = `group-${idx}`
 
       localStorage.setItem(title, newPrice)
