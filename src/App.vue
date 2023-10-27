@@ -149,6 +149,7 @@ export default {
 
   &__title {
     height: 35px;
+    width: 90%;
     color: #000;
     text-align: center;
     font-size: 16px;
