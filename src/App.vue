@@ -18,6 +18,26 @@
       </div>
     </div>
     <div class="finance-bottom">
+      <svg
+        class="finance-bottom__svg"
+        width="40"
+        height="35"
+        viewBox="0 0 40 35"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <ellipse cx="12.22" cy="11.9203" rx="12.22" ry="11.9203" fill="#23A991" />
+        <ellipse cx="28.92" cy="16.6522" rx="10.92" ry="10.6522" fill="black" />
+        <ellipse
+          cx="12.48"
+          cy="29.4203"
+          rx="5.72"
+          ry="5.57971"
+          fill="#F119F5"
+          fill-opacity="0.86"
+        />
+      </svg>
+
       <h3 class="finance-bottom__left">VALOR TOTAL</h3>
       <p class="finance-bottom__right">{{ expensesTotal }}</p>
     </div>
@@ -161,6 +181,7 @@ export default {
 }
 
 .finance-bottom {
+  position: relative;
   margin: 0 auto;
   border-radius: 10px;
   border: 1px solid #b297c8;
@@ -172,10 +193,15 @@ export default {
     color: #000;
     font-size: 12px;
     font-weight: 400;
-    margin-left: 64px;
+    margin-left: 77px;
   }
   &__right {
     margin-left: 20px;
+  }
+  &__svg {
+    position: absolute;
+    top: 7px;
+    left: 7px;
   }
 }
 </style>
