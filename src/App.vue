@@ -138,7 +138,7 @@ export default {
 }
 
 .finance-group-right {
-  width: 257px;
+  width: 210px;
   height: 66px;
   margin-right: 15px;
   border: 1px solid #b297c8;
