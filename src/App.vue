@@ -1,11 +1,16 @@
 <template>
   <div class="finance-wrapper">
-    <RouterView />
+    <ExpensesView />
   </div>
 </template>
 
 <script>
-import { RouterView } from 'vue-router'
+import ExpensesView from './views/ExpensesView.vue'
+export default {
+  components: {
+    ExpensesView
+  }
+}
 </script>
 
 <style scoped>
