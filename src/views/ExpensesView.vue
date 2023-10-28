@@ -1,37 +1,46 @@
 <template>
-  <div class="finance-top">
-    <h1 class="finance-top__title">GASTOS FIJOS</h1>
-  </div>
-  <div class="finance-group" v-for="(group, i) in groups" :key="i">
-    <div class="finance-group-right">
-      <input
-        class="finance-group-right__title"
-        type="number"
-        :value="group.price"
-        @input="updatePrice($event, i)"
-      />
+  <div class="expenses-wrapper">
+    <div class="finance-top">
+      <h1 class="finance-top__title">GASTOS FIJOS</h1>
     </div>
-    <div class="finance-group-left">
-      <h2 class="finance-group-left__title">{{ group.title }}</h2>
-      <h2 class="finance-group-left__price">{{ displayPrice(group) }}</h2>
+    <div class="finance-group" v-for="(group, i) in groups" :key="i">
+      <div class="finance-group-right">
+        <input
+          class="finance-group-right__title"
+          type="number"
+          :value="group.price"
+          @input="updatePrice($event, i)"
+        />
+      </div>
+      <div class="finance-group-left">
+        <h2 class="finance-group-left__title">{{ group.title }}</h2>
+        <h2 class="finance-group-left__price">{{ displayPrice(group) }}</h2>
+      </div>
     </div>
-  </div>
-  <div class="finance-bottom">
-    <svg
-      class="finance-bottom__svg"
-      width="40"
-      height="35"
-      viewBox="0 0 40 35"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <ellipse cx="12.22" cy="11.9203" rx="12.22" ry="11.9203" fill="#23A991" />
-      <ellipse cx="28.92" cy="16.6522" rx="10.92" ry="10.6522" fill="black" />
-      <ellipse cx="12.48" cy="29.4203" rx="5.72" ry="5.57971" fill="#F119F5" fill-opacity="0.86" />
-    </svg>
+    <div class="finance-bottom">
+      <svg
+        class="finance-bottom__svg"
+        width="40"
+        height="35"
+        viewBox="0 0 40 35"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <ellipse cx="12.22" cy="11.9203" rx="12.22" ry="11.9203" fill="#23A991" />
+        <ellipse cx="28.92" cy="16.6522" rx="10.92" ry="10.6522" fill="black" />
+        <ellipse
+          cx="12.48"
+          cy="29.4203"
+          rx="5.72"
+          ry="5.57971"
+          fill="#F119F5"
+          fill-opacity="0.86"
+        />
+      </svg>
 
-    <h3 class="finance-bottom__left">VALOR TOTAL</h3>
-    <p class="finance-bottom__right">{{ expensesTotal }}</p>
+      <h3 class="finance-bottom__left">VALOR TOTAL</h3>
+      <p class="finance-bottom__right">{{ expensesTotal }}</p>
+    </div>
   </div>
 </template>
 
@@ -94,6 +103,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.expenses-wrapper {
+  padding: 32px;
+}
 .finance-top {
   width: 100%;
   height: 67px;
