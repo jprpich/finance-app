@@ -104,7 +104,6 @@ export default {
 
 <style scoped lang="scss">
 .expenses-wrapper {
-  padding: 32px;
 }
 .finance-top {
   width: 100%;

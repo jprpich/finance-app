@@ -13,7 +13,9 @@
       <ellipse cx="70.08" cy="159.71" rx="32.12" ry="30.2899" fill="#F119F5" fill-opacity="0.86" />
     </svg>
 
-    <h1 class="register-title">AHORAPP</h1>
+    <RouterLink to="/expenses">
+      <h1 class="register-title">AHORAPP</h1>
+    </RouterLink>
 
     <svg
       class="register-bottom-image"
@@ -43,6 +45,7 @@ export default {}
   height: 100vh;
 }
 .app-logo {
+  margin: 17px;
 }
 
 .register-title {
