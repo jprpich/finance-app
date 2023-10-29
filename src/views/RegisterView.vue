@@ -13,9 +13,7 @@
       <ellipse cx="70.08" cy="159.71" rx="32.12" ry="30.2899" fill="#F119F5" fill-opacity="0.86" />
     </svg>
 
-    <RouterLink to="/expenses">
-      <h1 class="register-title">AHORAPP</h1>
-    </RouterLink>
+    <h1 class="register-title" @click="$emit('update-selected', 'ExpensesView')">AHORAPP</h1>
 
     <svg
       class="register-bottom-image"
