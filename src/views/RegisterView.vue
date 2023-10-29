@@ -13,27 +13,31 @@
       <ellipse cx="70.08" cy="159.71" rx="32.12" ry="30.2899" fill="#F119F5" fill-opacity="0.86" />
     </svg>
 
-    <h1 class="register-title" @click="$emit('update-selected', 'ExpensesView')">AHORAPP</h1>
+    <h1 class="register-title">AHORAPP</h1>
 
-    <svg
-      class="register-bottom-image"
-      width="430"
-      height="511"
-      viewBox="0 0 430 511"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M0 430C0 308.967 0 248.451 17.2076 199.858C47.4207 114.539 114.539 47.4207 199.858 17.2076C248.451 0 308.967 0 430 0V511H0V430Z"
-        fill="#B297C8"
-        fill-opacity="0.31"
-      />
-    </svg>
+    <div class="register">
+      <input class="register__input" type="text" v-model="user.email" />
+
+      <input class="register__input" type="text" v-model="user.password" />
+
+      <button class="register__btn" @click="$emit('update-selected', 'ExpensesView')">
+        entrar
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      user: {
+        email: 'email',
+        password: 'password'
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -42,6 +46,7 @@ export default {}
   width: 100%;
   height: 100vh;
 }
+
 .app-logo {
   margin: 17px;
 }
@@ -54,6 +59,36 @@ export default {}
   font-weight: 400;
   line-height: 100px; /* 208.333% */
   letter-spacing: 9.6px;
+}
+
+.register {
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+  &__input {
+    width: 236px;
+    height: 54px;
+    color: #000;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 38px;
+    border: 1px solid black;
+    padding-left: 20px;
+  }
+
+  &__btn {
+    width: 144px;
+    height: 54px;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 20px;
+    cursor: pointer;
+  }
 }
 
 .register-bottom-image {
