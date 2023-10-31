@@ -6,17 +6,17 @@
       </h1>
     </div>
     <div class="finance-group" v-for="(group, i) in groups" :key="i">
+      <div class="finance-group-left">
+        <h2 class="finance-group-left__title">{{ group.title }}</h2>
+      </div>
       <div class="finance-group-right">
         <input
           class="finance-group-right__title"
-          type="number"
+          type="text"
+          inputmode="decimal"
           :value="group.price"
           @input="updatePrice($event, i)"
         />
-      </div>
-      <div class="finance-group-left">
-        <h2 class="finance-group-left__title">{{ group.title }}</h2>
-        <h2 class="finance-group-left__price">{{ displayPrice(group) }}</h2>
       </div>
     </div>
     <div class="finance-bottom">
@@ -57,7 +57,8 @@ export default {
     expensesTotal() {
       let sum = 0
       this.groups.forEach((group) => {
-        sum += group.price
+        let price = group.price.replace(/[.]/g, '')
+        sum += +price
       })
       return '$' + sum.toLocaleString('de-DE')
     }
@@ -65,13 +66,11 @@ export default {
   methods: {
     updatePrice(e, idx) {
       const value = e.target.value
-      const price = value.replace(/[.]/g, '')
-      const newPrice = +price
       const title = `group-${idx}`
 
-      localStorage.setItem(title, newPrice)
+      localStorage.setItem(title, value)
 
-      this.groups[idx].price = newPrice
+      this.groups[idx].price = value
     },
     displayPrice(group) {
       return '$' + group.price.toLocaleString('de-DE')
@@ -81,23 +80,23 @@ export default {
     this.groups = [
       {
         title: 'Arriendo',
-        price: +localStorage.getItem('group-0') || 0
+        price: localStorage.getItem('group-0') || '0'
       },
       {
         title: 'Gas',
-        price: +localStorage.getItem('group-1') || 0
+        price: localStorage.getItem('group-1') || '0'
       },
       {
         title: 'Luz',
-        price: +localStorage.getItem('group-2') || 0
+        price: localStorage.getItem('group-2') || '0'
       },
       {
         title: 'Agua',
-        price: +localStorage.getItem('group-3') || 0
+        price: localStorage.getItem('group-3') || '0'
       },
       {
         title: 'Transporte',
-        price: +localStorage.getItem('group-4') || 0
+        price: localStorage.getItem('group-4') || '0'
       }
     ]
   }
@@ -161,7 +160,7 @@ export default {
 .finance-group-right {
   width: 210px;
   height: 66px;
-  margin-right: 15px;
+  margin-left: 15px;
   border: 1px solid #b297c8;
   border-radius: 10px;
   display: flex;
