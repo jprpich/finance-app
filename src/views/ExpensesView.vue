@@ -74,6 +74,7 @@ export default {
     }
   },
   created() {
+    console.log('testing 123')
     this.groups = [
       {
         title: 'Arriendo',
