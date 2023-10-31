@@ -2,7 +2,7 @@
   <div class="expenses-wrapper">
     <div class="finance-top">
       <h1 class="finance-top__title" @click="$emit('update-selected', 'RegisterView')">
-        GASTOS FIJOS
+        GASTOS FIJOS!!
       </h1>
     </div>
     <div class="finance-group" v-for="(group, i) in groups" :key="i">
