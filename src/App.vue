@@ -24,7 +24,7 @@ export default {
     }
   },
   created() {
-    this.selected = 'RegisterView'
+    this.selected = 'ExpensesView'
   }
 }
 </script>
