@@ -71,32 +71,29 @@ export default {
       localStorage.setItem(title, value)
 
       this.groups[idx].price = value
-    },
-    displayPrice(group) {
-      return '$' + group.price.toLocaleString('de-DE')
     }
   },
   created() {
     this.groups = [
       {
         title: 'Arriendo',
-        price: localStorage.getItem('group-0') || '0'
+        price: localStorage.getItem('group-0') || ''
       },
       {
         title: 'Gas',
-        price: localStorage.getItem('group-1') || '0'
+        price: localStorage.getItem('group-1') || ''
       },
       {
         title: 'Luz',
-        price: localStorage.getItem('group-2') || '0'
+        price: localStorage.getItem('group-2') || ''
       },
       {
         title: 'Agua',
-        price: localStorage.getItem('group-3') || '0'
+        price: localStorage.getItem('group-3') || ''
       },
       {
         title: 'Transporte',
-        price: localStorage.getItem('group-4') || '0'
+        price: localStorage.getItem('group-4') || ''
       }
     ]
   }
