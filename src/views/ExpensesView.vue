@@ -1,5 +1,6 @@
 <template>
   <svg
+    class="finance-top-svg"
     width="430"
     height="126"
     viewBox="0 0 430 126"
@@ -138,7 +139,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.finance-top-svg {
+  width: 100%;
+}
 .expenses-wrapper {
+  padding-left: 39px;
+  padding-right: 26px;
 }
 .finance-top {
   margin-top: 34px;
@@ -159,11 +165,11 @@ export default {
 
 .finance-group {
   display: flex;
-  margin-bottom: 38px;
+  margin-bottom: 19px;
 }
 
 .finance-group-left {
-  width: 140px;
+  width: 94px;
   height: 66px;
   border-radius: 10px;
   background-color: #6c236d;
@@ -190,10 +196,11 @@ export default {
 }
 
 .finance-group-right {
-  width: 210px;
+  width: 257px;
   height: 66px;
-  margin-left: 15px;
-  border: 1px solid #b297c8;
+  margin-left: 14px;
+  border: 1px solid #000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -213,11 +220,11 @@ export default {
 }
 
 .finance-bottom {
+  margin-top: 67px;
   position: relative;
-  margin: 0 auto;
   border-radius: 10px;
-  border: 1px solid #b297c8;
-  width: 299px;
+  border: 1px solid #000;
+  width: 252px;
   height: 70px;
   display: flex;
   align-items: center;
@@ -225,10 +232,10 @@ export default {
     color: #000;
     font-size: 12px;
     font-weight: 400;
-    margin-left: 77px;
+    margin-left: 57px;
   }
   &__right {
-    margin-left: 20px;
+    margin-left: 18px;
   }
   &__svg {
     position: absolute;
