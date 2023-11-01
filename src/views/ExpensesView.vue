@@ -45,17 +45,16 @@
   <div class="expenses-wrapper">
     <div v-if="showPopup" class="expenses-popup">
       <div class="expenses-popup__box">
-        <input
-          class="expenses-popup__input"
-          type="text"
-          inputmode="decimal"
-          value="CUENTA DE BANCO"
-          @input="updatePrice($event, i)"
-        />
+        <input class="expenses-popup__input" type="text" inputmode="decimal" v-model="newGroup" />
       </div>
       <div class="expenses-popup__bottom">
-        <button class="expenses-popup__bottom-btn expenses-popup__bottom-btn--left">cancel</button>
-        <button class="expenses-popup__bottom-btn">add</button>
+        <button
+          class="expenses-popup__bottom-btn expenses-popup__bottom-btn--left"
+          @click="showPopup = false"
+        >
+          cancel
+        </button>
+        <button class="expenses-popup__bottom-btn" @click="addGroup">add</button>
       </div>
     </div>
 
@@ -125,7 +124,8 @@ export default {
   data() {
     return {
       groups: null,
-      showPopup: false
+      showPopup: false,
+      newGroup: 'Nuevo Grupo'
     }
   },
   computed: {
@@ -146,30 +146,17 @@ export default {
       localStorage.setItem(title, value)
 
       this.groups[idx].price = value
+    },
+    addGroup() {
+      this.groups.push({
+        title: this.newGroup,
+        price: ''
+      })
+      this.showPopup = false
     }
   },
   created() {
     this.groups = [
-      {
-        title: 'Arriendo',
-        price: localStorage.getItem('group-0') || ''
-      },
-      {
-        title: 'Gas',
-        price: localStorage.getItem('group-1') || ''
-      },
-      {
-        title: 'Luz',
-        price: localStorage.getItem('group-2') || ''
-      },
-      {
-        title: 'Agua',
-        price: localStorage.getItem('group-3') || ''
-      },
-      {
-        title: 'Transporte',
-        price: localStorage.getItem('group-4') || ''
-      },
       {
         title: 'Arriendo',
         price: localStorage.getItem('group-0') || ''
