@@ -45,7 +45,7 @@
   <div class="expenses-wrapper">
     <div v-if="showPopup" class="expenses-popup">
       <div class="expenses-popup__box">
-        <input class="expenses-popup__input" type="text" inputmode="decimal" v-model="newGroup" />
+        <input class="expenses-popup__input" type="text" v-model="newGroup" />
       </div>
       <div class="expenses-popup__bottom">
         <button
