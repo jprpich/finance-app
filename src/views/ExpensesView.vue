@@ -43,43 +43,62 @@
   </div>
 
   <div class="expenses-wrapper">
-    <div class="finance-group" v-for="(group, i) in groups" :key="i">
-      <div class="finance-group-left">
-        <h2 class="finance-group-left__title">{{ group.title }}</h2>
-      </div>
-      <div class="finance-group-right">
-        <input
-          class="finance-group-right__title"
-          type="text"
-          inputmode="decimal"
-          :value="group.price"
-          @input="updatePrice($event, i)"
-        />
+    <div class="finance-groups">
+      <div class="finance-group" v-for="(group, i) in groups" :key="i">
+        <div class="finance-group-left">
+          <h2 class="finance-group-left__title">{{ group.title }}</h2>
+        </div>
+        <div class="finance-group-right">
+          <input
+            class="finance-group-right__title"
+            type="text"
+            inputmode="decimal"
+            :value="group.price"
+            @input="updatePrice($event, i)"
+          />
+        </div>
       </div>
     </div>
     <div class="finance-bottom">
-      <svg
-        class="finance-bottom__svg"
-        width="40"
-        height="35"
-        viewBox="0 0 40 35"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <ellipse cx="12.22" cy="11.9203" rx="12.22" ry="11.9203" fill="#23A991" />
-        <ellipse cx="28.92" cy="16.6522" rx="10.92" ry="10.6522" fill="black" />
-        <ellipse
-          cx="12.48"
-          cy="29.4203"
-          rx="5.72"
-          ry="5.57971"
-          fill="#F119F5"
-          fill-opacity="0.86"
-        />
-      </svg>
+      <div class="finance-bottom-sum">
+        <svg
+          class="finance-bottom-sum__svg"
+          width="40"
+          height="35"
+          viewBox="0 0 40 35"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <ellipse cx="12.22" cy="11.9203" rx="12.22" ry="11.9203" fill="#23A991" />
+          <ellipse cx="28.92" cy="16.6522" rx="10.92" ry="10.6522" fill="black" />
+          <ellipse
+            cx="12.48"
+            cy="29.4203"
+            rx="5.72"
+            ry="5.57971"
+            fill="#F119F5"
+            fill-opacity="0.86"
+          />
+        </svg>
 
-      <h3 class="finance-bottom__left">VALOR TOTAL</h3>
-      <p class="finance-bottom__right">{{ expensesTotal }}</p>
+        <h3 class="finance-bottom-sum__left">VALOR TOTAL</h3>
+        <p class="finance-bottom-sum__right">{{ expensesTotal }}</p>
+      </div>
+
+      <div class="finance-bottom-add">
+        <svg
+          width="51"
+          height="51"
+          viewBox="0 0 51 51"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M25.5 4.25C13.7828 4.25 4.25 13.7828 4.25 25.5C4.25 37.2172 13.7828 46.75 25.5 46.75C37.2172 46.75 46.75 37.2172 46.75 25.5C46.75 13.7828 37.2172 4.25 25.5 4.25ZM36.125 27.625H27.625V36.125H23.375V27.625H14.875V23.375H23.375V14.875H27.625V23.375H36.125V27.625Z"
+            fill="#6C236D"
+          />
+        </svg>
+      </div>
     </div>
   </div>
 </template>
@@ -132,6 +151,26 @@ export default {
       {
         title: 'Transporte',
         price: localStorage.getItem('group-4') || ''
+      },
+      {
+        title: 'Arriendo',
+        price: localStorage.getItem('group-0') || ''
+      },
+      {
+        title: 'Gas',
+        price: localStorage.getItem('group-1') || ''
+      },
+      {
+        title: 'Luz',
+        price: localStorage.getItem('group-2') || ''
+      },
+      {
+        title: 'Agua',
+        price: localStorage.getItem('group-3') || ''
+      },
+      {
+        title: 'Transporte',
+        price: localStorage.getItem('group-4') || ''
       }
     ]
   }
@@ -147,7 +186,7 @@ export default {
   padding-right: 26px;
 }
 .finance-top {
-  margin-top: 34px;
+  margin-top: 15px;
   margin-bottom: 19px;
   border-top: 2px solid rgba(178, 151, 200, 0.51);
   border-bottom: 2px solid rgba(178, 151, 200, 0.51);
@@ -161,6 +200,11 @@ export default {
     line-height: normal;
     margin: 19px 0;
   }
+}
+
+.finance-groups {
+  height: 45vh;
+  overflow: scroll;
 }
 
 .finance-group {
@@ -220,7 +264,14 @@ export default {
 }
 
 .finance-bottom {
-  margin-top: 67px;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-top: 2px solid rgba(178, 151, 200, 0.51);
+}
+
+.finance-bottom-sum {
   position: relative;
   border-radius: 10px;
   border: 1px solid #000;
@@ -235,12 +286,17 @@ export default {
     margin-left: 57px;
   }
   &__right {
-    margin-left: 18px;
+    margin-left: 6px;
   }
   &__svg {
     position: absolute;
     top: 7px;
     left: 7px;
   }
+}
+
+.finance-bottom-add {
+  cursor: pointer;
+  margin-left: 35px;
 }
 </style>
