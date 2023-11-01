@@ -34,7 +34,7 @@
             :value="group.price"
             @input="updatePrice($event, i)"
           />
-          <div class="finance-group-right__minus">
+          <div class="finance-group-right__minus" @click="deleteGroup(i)">
             <InlineSvg name="minus" />
           </div>
         </div>
@@ -77,43 +77,52 @@ export default {
   methods: {
     updatePrice(e, idx) {
       const value = e.target.value
-      const title = `group-${idx}`
-
-      localStorage.setItem(title, value)
-
       this.groups[idx].price = value
+      this.updateLocalStorage()
     },
     addGroup() {
       this.groups.push({
         title: this.newGroup,
         price: ''
       })
+      this.updateLocalStorage()
       this.showPopup = false
+    },
+    deleteGroup(i) {
+      this.groups.splice(i, 1)
+      this.updateLocalStorage()
+    },
+    updateLocalStorage() {
+      localStorage.groups = JSON.stringify(this.groups)
     }
   },
   created() {
-    this.groups = [
-      {
-        title: 'Arriendo',
-        price: localStorage.getItem('group-0') || ''
-      },
-      {
-        title: 'Gas',
-        price: localStorage.getItem('group-1') || ''
-      },
-      {
-        title: 'Luz',
-        price: localStorage.getItem('group-2') || ''
-      },
-      {
-        title: 'Agua',
-        price: localStorage.getItem('group-3') || ''
-      },
-      {
-        title: 'Transporte',
-        price: localStorage.getItem('group-4') || ''
-      }
-    ]
+    if (localStorage.groups) {
+      this.groups = JSON.parse(localStorage.groups)
+    } else {
+      this.groups = [
+        {
+          title: 'Arriendo',
+          price: ''
+        },
+        {
+          title: 'Gas',
+          price: ''
+        },
+        {
+          title: 'Luz',
+          price: ''
+        },
+        {
+          title: 'Agua',
+          price: ''
+        },
+        {
+          title: 'Transporte',
+          price: ''
+        }
+      ]
+    }
   }
 }
 </script>

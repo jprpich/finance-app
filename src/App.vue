@@ -1,6 +1,6 @@
 <template>
   <div class="finance-wrapper">
-    <component :is="selected" @update-selected="updateSelected" />
+    <component :is="selected" />
   </div>
 </template>
 
