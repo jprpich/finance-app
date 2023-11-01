@@ -43,6 +43,19 @@
   </div>
 
   <div class="expenses-wrapper">
+    <div v-if="showPopup" class="expenses-popup">
+      <div class="expenses-popup__box">
+        <input
+          class="expenses-popup__input"
+          type="text"
+          inputmode="decimal"
+          value="CUENTA DE BANCO"
+          @input="updatePrice($event, i)"
+        />
+      </div>
+      <div class="expenses-popup__bottom"></div>
+    </div>
+
     <div class="finance-groups">
       <div class="finance-group" v-for="(group, i) in groups" :key="i">
         <div class="finance-group-left">
@@ -87,6 +100,7 @@
 
       <div class="finance-bottom-add">
         <svg
+          @click="showPopup = true"
           width="51"
           height="51"
           viewBox="0 0 51 51"
@@ -107,7 +121,8 @@
 export default {
   data() {
     return {
-      groups: null
+      groups: null,
+      showPopup: false
     }
   },
   computed: {
@@ -182,8 +197,37 @@ export default {
   width: 100%;
 }
 .expenses-wrapper {
+  position: relative;
   padding-left: 39px;
   padding-right: 26px;
+}
+
+.expenses-popup {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  height: 172px;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #000;
+  &__box {
+    background-color: #6c236d;
+    width: 301px;
+    height: 66px;
+    margin: 19px auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  &__input {
+    background-color: #6c236d;
+    outline: none;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+  }
 }
 .finance-top {
   margin-top: 15px;
