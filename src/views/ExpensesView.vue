@@ -34,6 +34,9 @@
             :value="group.price"
             @input="updatePrice($event, i)"
           />
+          <div class="finance-group-right__minus">
+            <InlineSvg name="minus" />
+          </div>
         </div>
       </div>
     </div>
@@ -116,9 +119,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.finance-top-svg {
-  width: 100%;
-}
 .expenses-wrapper {
   position: relative;
   padding-left: 39px;
@@ -126,6 +126,7 @@ export default {
 }
 
 .expenses-popup {
+  z-index: 2;
   position: absolute;
   top: 115px;
   left: 0;
@@ -226,6 +227,7 @@ export default {
 }
 
 .finance-group-right {
+  position: relative;
   width: 257px;
   height: 66px;
   margin-left: 14px;
@@ -246,6 +248,18 @@ export default {
     font-weight: 300;
     outline: none;
     border: none;
+  }
+
+  &__minus {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 15px;
+    width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
