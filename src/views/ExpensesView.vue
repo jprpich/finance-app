@@ -46,19 +46,7 @@
       </div>
 
       <div class="finance-bottom-add">
-        <svg
-          @click="showPopup = true"
-          width="51"
-          height="51"
-          viewBox="0 0 51 51"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M25.5 4.25C13.7828 4.25 4.25 13.7828 4.25 25.5C4.25 37.2172 13.7828 46.75 25.5 46.75C37.2172 46.75 46.75 37.2172 46.75 25.5C46.75 13.7828 37.2172 4.25 25.5 4.25ZM36.125 27.625H27.625V36.125H23.375V27.625H14.875V23.375H23.375V14.875H27.625V23.375H36.125V27.625Z"
-            fill="#6C236D"
-          />
-        </svg>
+        <InlineSvg name="plus" @click="showPopup = true" />
       </div>
     </div>
   </div>
