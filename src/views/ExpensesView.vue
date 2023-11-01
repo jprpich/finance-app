@@ -53,7 +53,10 @@
           @input="updatePrice($event, i)"
         />
       </div>
-      <div class="expenses-popup__bottom"></div>
+      <div class="expenses-popup__bottom">
+        <button class="expenses-popup__bottom-btn expenses-popup__bottom-btn--left">cancel</button>
+        <button class="expenses-popup__bottom-btn">add</button>
+      </div>
     </div>
 
     <div class="finance-groups">
@@ -227,6 +230,25 @@ export default {
     text-align: center;
     font-size: 20px;
     font-weight: 400;
+  }
+  &__bottom {
+    display: flex;
+    justify-content: center;
+  }
+  &__bottom-btn {
+    cursor: pointer;
+    width: 119px;
+    height: 37px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    &--left {
+      margin-right: 20px;
+    }
   }
 }
 .finance-top {
