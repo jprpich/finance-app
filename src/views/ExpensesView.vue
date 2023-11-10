@@ -49,7 +49,7 @@
       </div>
 
       <div class="finance-bottom-add">
-        <InlineSvg name="plus" @click="showPopup = true" />
+        <InlineSvg name="plus" @click="showNewGroup" />
       </div>
     </div>
   </div>
@@ -94,6 +94,10 @@ export default {
     },
     updateLocalStorage() {
       localStorage.groups = JSON.stringify(this.groups)
+    },
+    showNewGroup() {
+      this.newGroup = 'Nuevo Grupo'
+      this.showPopup = true
     }
   },
   created() {
