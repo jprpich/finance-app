@@ -1,5 +1,5 @@
 <template>
-  <InlineSvg name="background-top" />
+  <InlineSvg class="background-top" name="background-top" />
 
   <div class="finance-top">
     <h1 class="finance-top__title">GASTOS FIJOS</h1>
@@ -128,6 +128,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.background-top {
+  width: 100%;
+}
+
 .expenses-wrapper {
   position: relative;
   padding-left: 39px;

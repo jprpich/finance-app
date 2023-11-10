@@ -31,6 +31,5 @@ export default {
 
 <style scoped>
 .finance-wrapper {
-  max-width: 500px;
 }
 </style>
