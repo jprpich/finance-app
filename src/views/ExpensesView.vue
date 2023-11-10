@@ -5,22 +5,22 @@
     <h1 class="finance-top__title">GASTOS FIJOS</h1>
   </div>
 
-  <div class="expenses-wrapper">
-    <div v-if="showPopup" class="expenses-popup">
-      <div class="expenses-popup__box">
-        <input class="expenses-popup__input" type="text" v-model="newGroup" />
-      </div>
-      <div class="expenses-popup__bottom">
-        <button
-          class="expenses-popup__bottom-btn expenses-popup__bottom-btn--left"
-          @click="showPopup = false"
-        >
-          cancel
-        </button>
-        <button class="expenses-popup__bottom-btn" @click="addGroup">add</button>
-      </div>
+  <div v-if="showPopup" class="expenses-popup">
+    <div class="expenses-popup__box">
+      <input class="expenses-popup__input" type="text" v-model="newGroup" />
     </div>
+    <div class="expenses-popup__bottom">
+      <button
+        class="expenses-popup__bottom-btn expenses-popup__bottom-btn--left"
+        @click="showPopup = false"
+      >
+        cancel
+      </button>
+      <button class="expenses-popup__bottom-btn" @click="addGroup">add</button>
+    </div>
+  </div>
 
+  <div v-else class="expenses-wrapper">
     <div class="finance-groups">
       <div class="finance-group" v-for="(group, i) in groups" :key="i">
         <div class="finance-group-left">
@@ -44,7 +44,7 @@
       <div class="finance-bottom-sum">
         <InlineSvg name="logo" class="finance-bottom-sum__svg" />
 
-        <h3 class="finance-bottom-sum__left">VALOR TOTAL</h3>
+        <h3 class="finance-bottom-sum__left">TOTAL</h3>
         <p class="finance-bottom-sum__right">{{ expensesTotal }}</p>
       </div>
 
@@ -133,7 +133,6 @@ export default {
 }
 
 .expenses-wrapper {
-  position: relative;
   padding-left: 39px;
   padding-right: 26px;
 }
@@ -141,7 +140,7 @@ export default {
 .expenses-popup {
   z-index: 2;
   position: absolute;
-  top: 115px;
+  top: 250px;
   left: 0;
   height: 172px;
   width: 100%;
