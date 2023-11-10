@@ -202,7 +202,7 @@ export default {
 }
 
 .finance-groups {
-  height: 45vh;
+  height: 40vh;
   overflow: scroll;
 }
 
