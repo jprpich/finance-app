@@ -8,9 +8,11 @@
   <div v-if="showPopup" class="expenses-popup">
     <div class="expenses-popup__box">
       <input
+        placeholder="Nuevo Grupo"
+        ref="addGroup"
+        id="group-name"
         class="expenses-popup__input"
         type="text"
-        autofocus
         v-model="newGroup"
         @keyup.enter="addGroup"
       />
@@ -36,6 +38,7 @@
           <input
             class="finance-group-right__title"
             type="text"
+            :id="'group-price-' + i"
             inputmode="decimal"
             :value="group.price"
             @input="updatePrice($event, i)"
@@ -67,7 +70,7 @@ export default {
     return {
       groups: null,
       showPopup: false,
-      newGroup: 'Nuevo Grupo'
+      newGroup: ''
     }
   },
   computed: {
@@ -102,8 +105,11 @@ export default {
       localStorage.groups = JSON.stringify(this.groups)
     },
     showNewGroup() {
-      this.newGroup = 'Nuevo Grupo'
+      this.newGroup = ''
       this.showPopup = true
+      this.$nextTick(function () {
+        this.$refs.addGroup.focus()
+      })
     }
   },
   created() {
