@@ -31,5 +31,6 @@ export default {
 
 <style scoped>
 .finance-wrapper {
+  position: relative;
 }
 </style>
