@@ -83,7 +83,7 @@ export default {
     addGroup() {
       this.groups.push({
         title: this.newGroup,
-        price: ''
+        price: '0'
       })
       this.updateLocalStorage()
       this.showPopup = false
