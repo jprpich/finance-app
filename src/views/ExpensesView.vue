@@ -7,16 +7,22 @@
 
   <div v-if="showPopup" class="expenses-popup">
     <div class="expenses-popup__box">
-      <input class="expenses-popup__input" type="text" v-model="newGroup" />
+      <input
+        class="expenses-popup__input"
+        type="text"
+        autofocus
+        v-model="newGroup"
+        @keyup.enter="addGroup"
+      />
     </div>
     <div class="expenses-popup__bottom">
       <button
         class="expenses-popup__bottom-btn expenses-popup__bottom-btn--left"
         @click="showPopup = false"
       >
-        cancel
+        cancelar
       </button>
-      <button class="expenses-popup__bottom-btn" @click="addGroup">add</button>
+      <button class="expenses-popup__bottom-btn" @click="addGroup">agregar</button>
     </div>
   </div>
 
@@ -167,6 +173,7 @@ export default {
     text-align: center;
     font-size: 20px;
     font-weight: 400;
+    width: 100%;
   }
   &__bottom {
     display: flex;
