@@ -241,9 +241,8 @@ export default {
   &__title {
     color: #fff;
     text-align: center;
-    font-size: 16px;
-    font-style: italic;
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 400;
     line-height: normal;
   }
 
@@ -272,9 +271,8 @@ export default {
     width: 90%;
     color: #000;
     text-align: center;
-    font-size: 16px;
-    font-style: italic;
-    font-weight: 300;
+    font-size: 12px;
+    font-weight: 400;
     outline: none;
     border: none;
   }
