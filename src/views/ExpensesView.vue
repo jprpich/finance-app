@@ -219,7 +219,7 @@ export default {
 }
 
 .finance-groups {
-  height: 40vh;
+  height: 50vh;
   overflow: scroll;
 }
 
@@ -292,7 +292,6 @@ export default {
 
 .finance-bottom {
   padding-top: 30px;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   border-top: 2px solid rgba(178, 151, 200, 0.51);
