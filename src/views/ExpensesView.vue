@@ -202,10 +202,10 @@ export default {
   }
 }
 .finance-top {
-  margin-top: 15px;
-  margin-bottom: 19px;
-  border-top: 2px solid rgba(178, 151, 200, 0.51);
-  border-bottom: 2px solid rgba(178, 151, 200, 0.51);
+  margin-top: 10px;
+  margin-bottom: 23px;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
 
   &__title {
     color: #000;
@@ -214,7 +214,7 @@ export default {
     font-style: italic;
     font-weight: 300;
     line-height: normal;
-    margin: 19px 0;
+    margin: 2px 0;
   }
 }
 
