@@ -283,7 +283,7 @@ export default {
     cursor: pointer;
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 0;
     height: 25px;
     width: 25px;
     display: flex;
