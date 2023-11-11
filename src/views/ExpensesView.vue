@@ -229,8 +229,8 @@ export default {
 }
 
 .finance-group-left {
-  width: 94px;
-  height: 66px;
+  width: 108px;
+  height: 45px;
   border-radius: 10px;
   background-color: #6c236d;
   display: flex;
@@ -258,8 +258,8 @@ export default {
 .finance-group-right {
   position: relative;
   width: 257px;
-  height: 66px;
-  margin-left: 14px;
+  height: 45px;
+  margin-left: 16px;
   border: 1px solid #000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
