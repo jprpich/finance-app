@@ -15,6 +15,8 @@
 
     <h1 class="register-title">AHORAPP</h1>
 
+    <p class="register-error-message">{{ errorMessage }}</p>
+
     <div class="register">
       <input class="register__input" placeholder="Nombre" type="text" v-model="user.name" />
 
@@ -44,14 +46,20 @@ export default {
         password: '',
         passwordConfirm: '',
         name: ''
-      }
+      },
+      errorMessage: ''
     }
   },
   methods: {
     onSubmit() {
-      axios.post('http://127.0.0.1:8000/api/v1/users/signup', this.user).then((res) => {
-        console.log(res)
-      })
+      axios
+        .post('http://127.0.0.1:8000/api/v1/users/signup', this.user)
+        .then((res) => {
+          console.log(res.data)
+        })
+        .catch((e) => {
+          this.errorMessage = e.response.data.message
+        })
     }
   }
 }
@@ -66,6 +74,10 @@ export default {
 
 .app-logo {
   margin: 17px;
+}
+
+.register-error-message {
+  color: rgb(210, 36, 36);
 }
 
 .register-title {
