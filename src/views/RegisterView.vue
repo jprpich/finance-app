@@ -16,25 +16,42 @@
     <h1 class="register-title">AHORAPP</h1>
 
     <div class="register">
-      <input class="register__input" type="text" v-model="user.email" />
+      <input class="register__input" placeholder="Nombre" type="text" v-model="user.name" />
 
-      <input class="register__input" type="text" v-model="user.password" />
+      <input class="register__input" placeholder="Email" type="text" v-model="user.email" />
 
-      <button class="register__btn" @click="$emit('update-selected', 'ExpensesView')">
-        entrar
-      </button>
+      <input class="register__input" placeholder="Contraseña" type="text" v-model="user.password" />
+
+      <input
+        class="register__input"
+        placeholder="Confirmar Contraseña"
+        type="text"
+        v-model="user.passwordConfirm"
+      />
+
+      <button class="register__btn" @click="onSubmit">crear cuenta</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
       user: {
-        email: 'email',
-        password: 'password'
+        email: '',
+        password: '',
+        passwordConfirm: '',
+        name: ''
       }
+    }
+  },
+  methods: {
+    onSubmit() {
+      axios.post('http://127.0.0.1:8000/api/v1/users/signup', this.user).then((res) => {
+        console.log(res)
+      })
     }
   }
 }
@@ -66,7 +83,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 120px;
+  margin-top: 60px;
   &__input {
     width: 236px;
     height: 54px;

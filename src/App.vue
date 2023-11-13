@@ -1,6 +1,6 @@
 <template>
   <div class="finance-wrapper">
-    <component :is="selected" />
+    <component :is="selected" @update-selected="updateSelected" />
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
     }
   },
   created() {
-    this.selected = 'ExpensesView'
+    this.selected = 'RegisterView'
   }
 }
 </script>
