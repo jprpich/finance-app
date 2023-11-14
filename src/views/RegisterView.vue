@@ -75,6 +75,7 @@ export default {
     },
     updateIsLogin() {
       this.user = {}
+      this.errorMessage = ''
       this.isLogin = !this.isLogin
     }
   }
@@ -93,6 +94,7 @@ export default {
 }
 
 .register-error-message {
+  text-align: center;
   color: rgb(210, 36, 36);
 }
 
@@ -130,7 +132,7 @@ export default {
     border: 1px solid black;
     padding-left: 20px;
     &--first {
-      margin-top: 95px;
+      margin-top: 140px;
     }
   }
 
@@ -148,6 +150,8 @@ export default {
 }
 
 .background-bottom {
+  width: 100%;
+
   position: absolute;
   z-index: 0;
 }
