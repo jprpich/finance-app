@@ -14,24 +14,36 @@
     </svg>
 
     <h1 class="register-title">AHORAPP</h1>
+    <div class="register-link" @click="updateIsLogin">
+      <a>{{ isLogin ? 'No tienes cuenta? Crea una cuenta' : 'Ya tienes una cuenta? entrar.' }}</a>
+    </div>
 
     <p class="register-error-message">{{ errorMessage }}</p>
 
     <div class="register">
-      <input class="register__input" placeholder="Nombre" type="text" v-model="user.name" />
+      <input
+        v-if="!isLogin"
+        class="register__input"
+        placeholder="Nombre"
+        type="text"
+        v-model="user.name"
+      />
 
       <input class="register__input" placeholder="Email" type="text" v-model="user.email" />
 
       <input class="register__input" placeholder="Contraseña" type="text" v-model="user.password" />
 
       <input
+        v-if="!isLogin"
         class="register__input"
         placeholder="Confirmar Contraseña"
         type="text"
         v-model="user.passwordConfirm"
       />
 
-      <button class="register__btn" @click="onSubmit">crear cuenta</button>
+      <button class="register__btn" @click="onSubmit">
+        {{ isLogin ? 'entrar' : 'crear cuenta' }}
+      </button>
     </div>
   </div>
 </template>
@@ -47,19 +59,35 @@ export default {
         passwordConfirm: '',
         name: ''
       },
-      errorMessage: ''
+      errorMessage: '',
+      isLogin: true
     }
   },
   methods: {
     onSubmit() {
-      axios
-        .post('http://127.0.0.1:8000/api/v1/users/signup', this.user)
-        .then((res) => {
-          console.log(res.data)
-        })
-        .catch((e) => {
-          this.errorMessage = e.response.data.message
-        })
+      if (this.isLogin) {
+        axios
+          .post('http://127.0.0.1:8000/api/v1/users/login', this.user)
+          .then((res) => {
+            console.log(res.data)
+          })
+          .catch((e) => {
+            this.errorMessage = e.response.data.message
+          })
+      } else {
+        axios
+          .post('http://127.0.0.1:8000/api/v1/users/signup', this.user)
+          .then((res) => {
+            console.log(res.data)
+          })
+          .catch((e) => {
+            this.errorMessage = e.response.data.message
+          })
+      }
+    },
+    updateIsLogin() {
+      this.user = {}
+      this.isLogin = !this.isLogin
     }
   }
 }
@@ -88,6 +116,11 @@ export default {
   font-weight: 400;
   line-height: 100px; /* 208.333% */
   letter-spacing: 9.6px;
+}
+
+.register-link {
+  cursor: pointer;
+  text-align: center;
 }
 
 .register {
