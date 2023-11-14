@@ -21,15 +21,14 @@
     <p class="register-error-message">{{ errorMessage }}</p>
 
     <div class="register">
-      <input
-        v-if="!isLogin"
-        class="register__input"
-        placeholder="Nombre"
-        type="text"
-        v-model="user.name"
-      />
+      <InlineSvg class="background-bottom" name="background-bottom" />
 
-      <input class="register__input" placeholder="Email" type="text" v-model="user.email" />
+      <input
+        class="register__input register__input--first"
+        placeholder="Email"
+        type="text"
+        v-model="user.email"
+      />
 
       <input class="register__input" placeholder="Contraseña" type="text" v-model="user.password" />
 
@@ -124,12 +123,14 @@ export default {
 }
 
 .register {
-  z-index: 20;
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 60px;
   &__input {
+    z-index: 1;
     width: 236px;
     height: 54px;
     color: #000;
@@ -139,9 +140,13 @@ export default {
     margin-bottom: 38px;
     border: 1px solid black;
     padding-left: 20px;
+    &--first {
+      margin-top: 95px;
+    }
   }
 
   &__btn {
+    z-index: 1;
     width: 144px;
     height: 54px;
     background-color: #000;
@@ -153,8 +158,8 @@ export default {
   }
 }
 
-.register-bottom-image {
+.background-bottom {
   position: absolute;
-  bottom: 0;
+  z-index: 0;
 }
 </style>
