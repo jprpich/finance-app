@@ -55,7 +55,10 @@ export default {
     onSubmit() {
       if (this.isLogin) {
         axios
-          .post('http://127.0.0.1:8000/api/v1/users/login', this.user)
+          .post(
+            'https://enigmatic-dusk-15206-c535d8153e09.herokuapp.com/api/v1/users/login',
+            this.user
+          )
           .then((res) => {
             console.log(res.data)
           })
@@ -64,7 +67,10 @@ export default {
           })
       } else {
         axios
-          .post('http://127.0.0.1:8000/api/v1/users/signup', this.user)
+          .post(
+            'https://enigmatic-dusk-15206-c535d8153e09.herokuapp.com/api/v1/users/signup',
+            this.user
+          )
           .then((res) => {
             console.log(res.data)
           })
