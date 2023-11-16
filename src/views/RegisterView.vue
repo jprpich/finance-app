@@ -61,6 +61,7 @@ export default {
           )
           .then((res) => {
             console.log(res.data)
+            this.$router.push('/expenses')
           })
           .catch((e) => {
             this.errorMessage = e.response.data.message
@@ -73,6 +74,7 @@ export default {
           )
           .then((res) => {
             console.log(res.data)
+            this.$router.push('/expenses')
           })
           .catch((e) => {
             this.errorMessage = e.response.data.message
