@@ -1,31 +1,18 @@
 <template>
   <div class="finance-wrapper">
-    <component :is="selected" @update-selected="updateSelected" />
+    <RouterLink to="/" style="margin-right: 30px">Register</RouterLink>
+    <RouterLink to="/expenses">Expenses</RouterLink>
+    <RouterView />
   </div>
 </template>
 
 <script>
-import ExpensesView from './views/ExpensesView.vue'
-import RegisterView from './views/RegisterView.vue'
-
 export default {
   data() {
-    return {
-      selected: ''
-    }
+    return {}
   },
-  components: {
-    ExpensesView,
-    RegisterView
-  },
-  methods: {
-    updateSelected(view) {
-      this.selected = view
-    }
-  },
-  created() {
-    this.selected = 'RegisterView'
-  }
+  methods: {},
+  created() {}
 }
 </script>
 
