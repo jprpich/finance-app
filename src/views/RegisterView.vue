@@ -55,10 +55,7 @@ export default {
     onSubmit() {
       if (this.isLogin) {
         axios
-          .post(
-            'https://enigmatic-dusk-15206-c535d8153e09.herokuapp.com/api/v1/users/login',
-            this.user
-          )
+          .post(import.meta.env.VITE_API_URL + 'api/v1/users/login', this.user)
           .then((res) => {
             console.log(res.data)
             this.$router.push('/expenses')
@@ -68,10 +65,7 @@ export default {
           })
       } else {
         axios
-          .post(
-            'https://enigmatic-dusk-15206-c535d8153e09.herokuapp.com/api/v1/users/signup',
-            this.user
-          )
+          .post(import.meta.env.VITE_API_URL + 'api/v1/users/signup', this.user)
           .then((res) => {
             console.log(res.data)
             this.$router.push('/expenses')
