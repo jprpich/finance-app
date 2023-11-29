@@ -74,7 +74,8 @@ export default {
       groups: [],
       onFocusPrice: '',
       showPopup: false,
-      newGroup: ''
+      newGroup: '',
+      isAddOrDelete: false
     }
   },
   computed: {
@@ -100,15 +101,17 @@ export default {
         title: this.newGroup,
         price: '0'
       })
+      this.isAddOrDelete = true
       this.updateGroups()
       this.showPopup = false
     },
     deleteGroup(i) {
+      this.isAddOrDelete = true
       this.groups.splice(i, 1)
       this.updateGroups()
     },
     updateGroups(i) {
-      if (this.onFocusPrice !== this.groups[i].price) {
+      if (this.isAddOrDelete || this.onFocusPrice !== this.groups[i].price) {
         const config = {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         }
@@ -125,6 +128,8 @@ export default {
           .catch((e) => {
             console.log(e)
           })
+
+        this.isAddOrDelete = false
       }
     },
     showNewGroup() {
