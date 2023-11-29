@@ -42,6 +42,7 @@
             inputmode="decimal"
             :value="group.price"
             @input="updatePrice($event, i)"
+            @blur="updateGroups"
           />
           <div class="finance-group-right__minus" @click="deleteGroup(i)">
             <InlineSvg name="minus" />
@@ -65,10 +66,11 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
-      groups: null,
+      groups: [],
       showPopup: false,
       newGroup: ''
     }
@@ -87,22 +89,36 @@ export default {
     updatePrice(e, idx) {
       const value = e.target.value
       this.groups[idx].price = value
-      this.updateLocalStorage()
     },
     addGroup() {
       this.groups.push({
         title: this.newGroup,
         price: '0'
       })
-      this.updateLocalStorage()
+      this.updateGroups()
       this.showPopup = false
     },
     deleteGroup(i) {
       this.groups.splice(i, 1)
-      this.updateLocalStorage()
+      this.updateGroups()
     },
-    updateLocalStorage() {
-      localStorage.groups = JSON.stringify(this.groups)
+    updateGroups() {
+      const config = {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      }
+
+      const bodyParameters = {
+        groups: this.groups
+      }
+
+      axios
+        .patch(import.meta.env.VITE_API_URL + 'api/v1/users/updateMe', bodyParameters, config)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     },
     showNewGroup() {
       this.newGroup = ''
@@ -113,32 +129,18 @@ export default {
     }
   },
   created() {
-    if (localStorage.groups) {
-      this.groups = JSON.parse(localStorage.groups)
-    } else {
-      this.groups = [
-        {
-          title: 'Arriendo',
-          price: ''
-        },
-        {
-          title: 'Gas',
-          price: ''
-        },
-        {
-          title: 'Luz',
-          price: ''
-        },
-        {
-          title: 'Agua',
-          price: ''
-        },
-        {
-          title: 'Transporte',
-          price: ''
-        }
-      ]
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     }
+
+    axios
+      .get(import.meta.env.VITE_API_URL + 'api/v1/users/getMe', config)
+      .then((res) => {
+        this.groups = res.data.data.user.groups
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   }
 }
 </script>
