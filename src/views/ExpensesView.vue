@@ -42,7 +42,8 @@
             inputmode="decimal"
             :value="group.price"
             @input="updatePrice($event, i)"
-            @blur="updateGroups"
+            @focus="updateOnFocusPrice($event)"
+            @blur="updateGroups(i)"
           />
           <div class="finance-group-right__minus" @click="deleteGroup(i)">
             <InlineSvg name="minus" />
@@ -71,6 +72,7 @@ export default {
   data() {
     return {
       groups: [],
+      onFocusPrice: '',
       showPopup: false,
       newGroup: ''
     }
@@ -90,6 +92,9 @@ export default {
       const value = e.target.value
       this.groups[idx].price = value
     },
+    updateOnFocusPrice(e) {
+      this.onFocusPrice = e.target.value
+    },
     addGroup() {
       this.groups.push({
         title: this.newGroup,
@@ -102,23 +107,25 @@ export default {
       this.groups.splice(i, 1)
       this.updateGroups()
     },
-    updateGroups() {
-      const config = {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      }
+    updateGroups(i) {
+      if (this.onFocusPrice !== this.groups[i].price) {
+        const config = {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        }
 
-      const bodyParameters = {
-        groups: this.groups
-      }
+        const bodyParameters = {
+          groups: this.groups
+        }
 
-      axios
-        .patch(import.meta.env.VITE_API_URL + 'api/v1/users/updateMe', bodyParameters, config)
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((e) => {
-          console.log(e)
-        })
+        axios
+          .patch(import.meta.env.VITE_API_URL + 'api/v1/users/updateMe', bodyParameters, config)
+          .then((res) => {
+            console.log(res)
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+      }
     },
     showNewGroup() {
       this.newGroup = ''
