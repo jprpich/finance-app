@@ -57,8 +57,7 @@ export default {
         axios
           .post(import.meta.env.VITE_API_URL + 'api/v1/users/login', this.user)
           .then((res) => {
-            console.log(res.data)
-            this.$router.push('/expenses')
+            this.setToken(res)
           })
           .catch((e) => {
             this.errorMessage = e.response.data.message
@@ -67,13 +66,16 @@ export default {
         axios
           .post(import.meta.env.VITE_API_URL + 'api/v1/users/signup', this.user)
           .then((res) => {
-            console.log(res.data)
-            this.$router.push('/expenses')
+            this.setToken(res)
           })
           .catch((e) => {
             this.errorMessage = e.response.data.message
           })
       }
+    },
+    setToken(res) {
+      localStorage.setItem('token', res.data.token)
+      this.$router.push('/expenses')
     },
     updateIsLogin() {
       this.user = {}

@@ -12,6 +12,12 @@ const router = createRouter({
     {
       path: '/expenses',
       name: 'expenses',
+      beforeEnter: (to, from) => {
+        const token = localStorage.getItem('token')
+        if (!token) {
+          return '/'
+        }
+      },
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
